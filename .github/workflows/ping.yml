@@ -1,11 +1,7 @@
 name: Telegram pings
 
 on:
-  schedule:
-    # UTC. Melbourne is UTC+11 (AEDT) for the whole sprint, so 21:00 UTC = 08:00 local (8am).
-    # ":02" = top-of-hour slot, ":32" = half-hour slot. Off the :00 mark because GitHub is busiest then.
-    - cron: "2 21-23,0-12 * * *"
-    - cron: "32 21-23,0-12 * * *"
+  # Triggered by cron-job.org at :01 and :31, 8am-11:31pm Australia/Melbourne (GitHub schedule never fired).
   workflow_dispatch:
     inputs:
       at:
