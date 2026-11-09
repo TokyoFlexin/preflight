@@ -1,0 +1,40 @@
+name: Telegram pings
+
+on:
+  schedule:
+    # UTC. Melbourne is UTC+11 (AEDT) for the whole sprint, so 21:00 UTC = 08:00 local.
+    # ":02" = top-of-hour slot, ":32" = half-hour slot. Off the :00 mark because GitHub is busiest then.
+    - cron: "2 21-23,0-12 * * *"
+    - cron: "32 21-23,0-12 * * *"
+  workflow_dispatch:
+    inputs:
+      at:
+        description: 'Simulate a Melbourne time, "YYYY-MM-DD HH:MM" (blank = now)'
+        required: false
+        default: ""
+      mode:
+        description: "slot = normal run, test = hello message + what this slot would send"
+        required: false
+        default: "test"
+        type: choice
+        options: [test, slot]
+
+concurrency:
+  group: telegram-pings
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Send ping
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          APP_URL: ${{ vars.APP_URL }}
+          SCHEDULE: ${{ github.event.schedule }}
+          PREFLIGHT_AT: ${{ github.event.inputs.at }}
+          PREFLIGHT_MODE: ${{ github.event.inputs.mode || 'slot' }}
+        run: python3 scripts/ping.py

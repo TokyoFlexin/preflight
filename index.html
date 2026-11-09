@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Preflight</title>
+  <meta name="description" content="18-day sprint to departure: steps, push-ups, gym.">
+  <meta name="theme-color" content="#EFEBE4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1A1816" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Preflight">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="preload" href="fonts/fraunces-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- Boarding pass -->
+    <header class="pass" aria-label="Sprint overview">
+      <div class="pass__row pass__top">
+        <span>Preflight</span>
+        <span>Boarding pass</span>
+      </div>
+      <div class="pass__route">
+        <div class="pass__city"><span class="pass__code">MEL</span><span class="pass__name">Melbourne</span></div>
+        <div class="pass__line" aria-hidden="true"><span></span></div>
+        <div class="pass__city pass__city--end"><span class="pass__code">PVG</span><span class="pass__name">Shanghai</span></div>
+      </div>
+      <dl class="pass__meta">
+        <div><dt>Departs</dt><dd>27 Nov</dd></div>
+        <div><dt>Day</dt><dd id="pass-day">–</dd></div>
+        <div><dt>T-minus</dt><dd id="pass-tminus">–</dd></div>
+      </dl>
+      <div class="pass__perf" aria-hidden="true"></div>
+      <div class="pass__row pass__stub">
+        <span id="pass-date">–</span>
+        <span id="pass-session">–</span>
+      </div>
+    </header>
+
+    <!-- 01 Push-ups -->
+    <section class="block" aria-labelledby="h-push">
+      <div class="block__head">
+        <h2 id="h-push"><span class="idx">01</span> Push-ups</h2>
+        <span class="block__aside" id="push-slot">–</span>
+      </div>
+
+      <div class="hero">
+        <div class="hero__num" id="push-target" aria-live="polite">20</div>
+        <div class="hero__cap">
+          <span id="push-cap">push-ups this hour</span>
+          <span class="streak" id="push-streak" aria-label="Hits toward next step up"></span>
+        </div>
+      </div>
+
+      <div class="logger">
+        <button class="btn btn--sq" id="push-minus" aria-label="One less">−</button>
+        <label class="sr-only" for="push-count">Push-ups done</label>
+        <input class="logger__input" id="push-count" type="number" inputmode="numeric" min="0" max="200" value="20">
+        <button class="btn btn--sq" id="push-plus" aria-label="One more">+</button>
+        <button class="btn btn--primary" id="push-log">Log set</button>
+      </div>
+      <p class="note" id="push-note" aria-live="polite"></p>
+
+      <div class="stats">
+        <div><span class="stats__k">Today</span><span class="stats__v" id="push-total">0</span></div>
+        <div><span class="stats__k">Sets</span><span class="stats__v" id="push-sets">0</span></div>
+        <div><span class="stats__k">Sprint</span><span class="stats__v" id="push-sprint">0</span></div>
+      </div>
+
+      <ol class="ledger" id="push-ledger" aria-label="Sets logged today"></ol>
+
+      <div class="actions">
+        <button class="btn btn--ghost" id="push-undo">Undo last</button>
+        <button class="btn btn--ghost" id="push-sore">Sore joints</button>
+      </div>
+    </section>
+
+    <!-- 02 Steps -->
+    <section class="block" aria-labelledby="h-steps">
+      <div class="block__head">
+        <h2 id="h-steps"><span class="idx">02</span> Steps</h2>
+        <span class="block__aside" id="steps-aside">Goal 10,000</span>
+      </div>
+
+      <div class="steps">
+        <label class="steps__label" for="steps-input">Steps so far</label>
+        <div class="steps__row">
+          <input class="steps__input" id="steps-input" type="number" inputmode="numeric" min="0" max="80000" placeholder="0">
+          <span class="steps__of">/ 10,000</span>
+        </div>
+        <div class="bar" role="progressbar" aria-label="Steps progress" aria-valuemin="0" aria-valuemax="100" id="steps-bar"><span></span></div>
+      </div>
+
+      <ul class="walks" id="walks"></ul>
+    </section>
+
+    <!-- 03 Gym -->
+    <section class="block" aria-labelledby="h-gym">
+      <div class="block__head">
+        <h2 id="h-gym"><span class="idx">03</span> Gym</h2>
+        <span class="block__aside" id="gym-aside">Fitness First</span>
+      </div>
+
+      <div class="session">
+        <h3 class="session__title" id="gym-title">–</h3>
+        <label class="session__swap">
+          <span class="sr-only">Change today's session</span>
+          <select id="gym-swap">
+            <option value="legs">Legs</option>
+            <option value="shoulders">Shoulders + back</option>
+            <option value="upper">Upper</option>
+            <option value="light">Light pump</option>
+            <option value="rest">Rest</option>
+          </select>
+        </label>
+      </div>
+      <p class="note" id="gym-note"></p>
+      <table class="lifts" id="gym-lifts">
+        <thead><tr><th scope="col">Exercise</th><th scope="col">Sets</th><th scope="col">Reps</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <button class="btn btn--wide" id="gym-done" aria-pressed="false">Mark session done</button>
+    </section>
+
+    <!-- 04 Itinerary -->
+    <section class="block" aria-labelledby="h-itin">
+      <div class="block__head">
+        <h2 id="h-itin"><span class="idx">04</span> Itinerary</h2>
+        <span class="block__aside">18 days</span>
+      </div>
+      <div class="grid" id="grid" role="list"></div>
+      <div class="legend" aria-hidden="true">
+        <span><i class="mk mk--steps"></i>10k steps</span>
+        <span><i class="mk mk--gym"></i>Gym done</span>
+        <span><b>48</b> push-ups</span>
+      </div>
+      <p class="note" id="grid-detail" aria-live="polite"></p>
+    </section>
+
+    <!-- 05 Check-in -->
+    <section class="block" aria-labelledby="h-check">
+      <div class="block__head">
+        <h2 id="h-check"><span class="idx">05</span> Check-in</h2>
+        <span class="block__aside">Morning, before food</span>
+      </div>
+      <div class="checkin">
+        <fieldset>
+          <legend>Start · Tue 10 Nov</legend>
+          <label><span>Weight <span class="unit">kg</span></span><input id="ci-start-w" type="number" inputmode="decimal" step="0.1" min="30" max="250"></label>
+          <label><span>Waist <span class="unit">cm</span></span><input id="ci-start-waist" type="number" inputmode="decimal" step="0.5" min="40" max="200"></label>
+          <label><span>Body fat <span class="unit">% · scale</span></span><input id="ci-start-bf" type="number" inputmode="decimal" step="0.1" min="2" max="60" placeholder="optional"></label>
+        </fieldset>
+        <fieldset>
+          <legend>Finish · Thu 26 Nov</legend>
+          <label><span>Weight <span class="unit">kg</span></span><input id="ci-end-w" type="number" inputmode="decimal" step="0.1" min="30" max="250"></label>
+          <label><span>Waist <span class="unit">cm</span></span><input id="ci-end-waist" type="number" inputmode="decimal" step="0.5" min="40" max="200"></label>
+          <label><span>Body fat <span class="unit">% · scale</span></span><input id="ci-end-bf" type="number" inputmode="decimal" step="0.1" min="2" max="60" placeholder="optional"></label>
+        </fieldset>
+      </div>
+      <p class="note" id="ci-delta"></p>
+    </section>
+
+    <footer class="foot">
+      <p>Your log lives on this phone only. Back it up now and then.</p>
+      <div class="actions">
+        <button class="btn btn--ghost" id="backup-export">Export backup</button>
+        <label class="btn btn--ghost" for="backup-import">Import backup</label>
+        <input class="sr-only" id="backup-import" type="file" accept="application/json">
+      </div>
+    </footer>
+  </main>
+
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+{
+  "name": "Preflight",
+  "route": {
+    "from": "MEL",
+    "to": "PVG",
+    "departure": "2026-11-27"
+  },
+  "timezone": "Australia/Melbourne",
+  "start": "2026-11-09",
+  "end": "2026-11-26",
+  "stepGoal": 10000,
+  "pushups": {
+    "startTarget": 20,
+    "firstHour": 9,
+    "lastHour": 23,
+    "minTarget": 5,
+    "maxTarget": 30,
+    "stepUp": 2,
+    "hitsToStepUp": 3,
+    "soreFactor": 0.6,
+    "upperBlockBefore": 180
+  },
+  "walks": [
+    {
+      "id": "morning",
+      "time": "08:30",
+      "minutes": 30,
+      "label": "Morning walk"
+    },
+    {
+      "id": "lunch",
+      "time": "12:30",
+      "minutes": 30,
+      "label": "Lunch walk"
+    },
+    {
+      "id": "afternoon",
+      "time": "16:00",
+      "minutes": 20,
+      "label": "Afternoon walk"
+    },
+    {
+      "id": "evening",
+      "time": "20:30",
+      "minutes": 20,
+      "label": "Evening walk"
+    }
+  ],
+  "lightWeekEnds": "2026-11-15",
+  "sessions": {
+    "legs": {
+      "title": "Legs",
+      "exercises": [
+        [
+          "Back squat or leg press",
+          3,
+          "8–10"
+        ],
+        [
+          "Romanian deadlift",
+          3,
+          "8–10"
+        ],
+        [
+          "Walking lunges",
+          2,
+          "10 / leg"
+        ],
+        [
+          "Lying leg curl",
+          2,
+          "12"
+        ],
+        [
+          "Standing calf raise",
+          3,
+          "12–15"
+        ],
+        [
+          "Incline treadmill",
+          1,
+          "15 min"
+        ]
+      ]
+    },
+    "shoulders": {
+      "title": "Shoulders + back",
+      "exercises": [
+        [
+          "Lat pulldown",
+          3,
+          "8–12"
+        ],
+        [
+          "Seated cable row",
+          3,
+          "10"
+        ],
+        [
+          "Lateral raise",
+          3,
+          "12–15"
+        ],
+        [
+          "Reverse pec deck",
+          3,
+          "15"
+        ],
+        [
+          "Face pull",
+          2,
+          "15"
+        ],
+        [
+          "Hammer curl",
+          2,
+          "12"
+        ],
+        [
+          "Incline treadmill",
+          1,
+          "15 min"
+        ]
+      ]
+    },
+    "upper": {
+      "title": "Upper",
+      "exercises": [
+        [
+          "Incline dumbbell press",
+          3,
+          "8–10"
+        ],
+        [
+          "Machine chest press",
+          2,
+          "10"
+        ],
+        [
+          "Dips or close-grip press",
+          2,
+          "10"
+        ],
+        [
+          "Lateral raise",
+          2,
+          "15"
+        ],
+        [
+          "EZ-bar curl",
+          2,
+          "10"
+        ],
+        [
+          "Triceps pushdown",
+          2,
+          "12"
+        ],
+        [
+          "Incline treadmill",
+          1,
+          "15 min"
+        ]
+      ]
+    },
+    "light": {
+      "title": "Light pump + check-in",
+      "exercises": [
+        [
+          "Weigh-in + waist, before training",
+          1,
+          "same as day 1"
+        ],
+        [
+          "Leg press",
+          2,
+          "12, easy"
+        ],
+        [
+          "Lat pulldown",
+          2,
+          "12, easy"
+        ],
+        [
+          "Machine chest press",
+          2,
+          "12, easy"
+        ],
+        [
+          "Lateral raise",
+          2,
+          "15"
+        ]
+      ]
+    },
+    "rest": {
+      "title": "Rest",
+      "exercises": []
+    }
+  },
+  "schedule": {
+    "2026-11-09": {
+      "session": "legs"
+    },
+    "2026-11-10": {
+      "session": "shoulders"
+    },
+    "2026-11-11": {
+      "session": "upper"
+    },
+    "2026-11-12": {
+      "session": "rest",
+      "shift": [
+        "17:30",
+        "21:00"
+      ]
+    },
+    "2026-11-13": {
+      "session": "legs",
+      "gym": "13:00",
+      "shift": [
+        "16:30",
+        "20:30"
+      ]
+    },
+    "2026-11-14": {
+      "session": "shoulders",
+      "gym": "14:00",
+      "shift": [
+        "18:00",
+        "22:00"
+      ]
+    },
+    "2026-11-15": {
+      "session": "upper"
+    },
+    "2026-11-16": {
+      "session": "rest"
+    },
+    "2026-11-17": {
+      "session": "legs",
+      "gym": "13:00",
+      "shift": [
+        "16:30",
+        "20:00"
+      ]
+    },
+    "2026-11-18": {
+      "session": "shoulders"
+    },
+    "2026-11-19": {
+      "session": "upper",
+      "gym": "13:30",
+      "shift": [
+        "17:30",
+        "21:00"
+      ]
+    },
+    "2026-11-20": {
+      "session": "rest",
+      "shift": [
+        "16:30",
+        "20:30"
+      ]
+    },
+    "2026-11-21": {
+      "session": "legs",
+      "gym": "14:00",
+      "shift": [
+        "18:00",
+        "22:00"
+      ]
+    },
+    "2026-11-22": {
+      "session": "shoulders"
+    },
+    "2026-11-23": {
+      "session": "upper"
+    },
+    "2026-11-24": {
+      "session": "rest"
+    },
+    "2026-11-25": {
+      "session": "legs"
+    },
+    "2026-11-26": {
+      "session": "light",
+      "gym": "13:00",
+      "shift": [
+        "17:30",
+        "21:00"
+      ]
+    }
+  },
+  "defaultGym": "20:30",
+  "gymMinutes": 90,
+  "shiftBufferBefore": 30,
+  "shiftBufferAfter": 15,
+  "gymWalkLabel": "Incline walk at the gym",
+  "gymName": "Fitness First"
+}
